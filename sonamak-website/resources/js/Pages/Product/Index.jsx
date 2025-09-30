@@ -1,14 +1,27 @@
 import { Head } from '@inertiajs/react';
 import MainLayout from '@/Layouts/MainLayout';
 
+// Product Overview Page Sections
+import ProductHero from '@/Components/Product/ProductHero';
+import PlatformPillars from '@/Components/Product/PlatformPillars';
+import AllModulesGrid from '@/Components/Product/AllModulesGrid';
+import KeyCapabilities from '@/Components/Product/KeyCapabilities';
+import RoleJourneys from '@/Components/Product/RoleJourneys';
+import ProductGallery from '@/Components/Product/ProductGallery';
+
 export default function ProductIndex() {
     return (
         <>
-            <Head title="Product" />
-            <div className="container mx-auto py-12 px-6">
-                <h1 className="text-4xl font-bold">Product Overview</h1>
-                <p className="mt-4 text-lg">This is the product overview page.</p>
-            </div>
+            <Head title="Product Overview" />
+
+            <ProductHero />
+            <PlatformPillars />
+            <AllModulesGrid />
+            <KeyCapabilities />
+            <RoleJourneys />
+            <ProductGallery />
+
+            {/* A final CTA could be added here, similar to the homepage */}
         </>
     );
 }
