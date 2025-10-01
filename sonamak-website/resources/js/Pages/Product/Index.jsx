@@ -11,7 +11,7 @@ import ProductGallery from '@/Components/Product/ProductGallery';
 
 export default function ProductIndex() {
     return (
-        <>
+        <MainLayout>
             <Head title="Product Overview" />
 
             <ProductHero />
@@ -22,8 +22,6 @@ export default function ProductIndex() {
             <ProductGallery />
 
             {/* A final CTA could be added here, similar to the homepage */}
-        </>
+        </MainLayout>
     );
 }
-
-ProductIndex.layout = page => <MainLayout children={page} />;
