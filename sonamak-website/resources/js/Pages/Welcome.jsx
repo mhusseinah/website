@@ -16,7 +16,7 @@ import FinalCtaBand from '@/Components/Homepage/FinalCtaBand';
 
 export default function Welcome() {
     return (
-        <>
+        <MainLayout>
             <Head title="Clinic Management ERP for Multi-Branch Practices" />
 
             {/* Page Sections */}
@@ -31,8 +31,6 @@ export default function Welcome() {
             <Testimonials />
             <Faq />
             <FinalCtaBand />
-        </>
+        </MainLayout>
     );
 }
-
-Welcome.layout = page => <MainLayout children={page} />;

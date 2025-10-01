@@ -40,6 +40,8 @@ class HandleInertiaRequests extends Middleware
         return [
             ...parent::share($request),
             'auth' => [
+                // Even without full auth scaffolding, it's good practice
+                // to have the user object available for potential future use.
                 'user' => $request->user(),
             ],
             'locale' => $locale,

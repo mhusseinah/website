@@ -14,7 +14,8 @@ export default function Footer() {
                             <li><Link href="/product/scheduling" className="hover:text-blue-400">Scheduling</Link></li>
                             <li><Link href="/product/ehr" className="hover:text-blue-400">EHR</Link></li>
                             <li><Link href="/product/billing" className="hover:text-blue-400">Billing</Link></li>
-                            {/* Add all other module links */}
+                            <li><Link href="/product/inventory" className="hover:text-blue-400">Inventory</Link></li>
+                            <li><Link href="/product/oncology" className="hover:text-blue-400">Oncology</Link></li>
                         </ul>
                     </div>
 
@@ -22,9 +23,9 @@ export default function Footer() {
                     <div>
                         <h3 className="font-bold mb-4">Solutions</h3>
                         <ul>
-                            <li><Link href="/solutions/dentistry" className="hover:text-blue-400">By Specialty</Link></li>
-                            <li><Link href="/solutions/roi" className="hover:text-blue-400">By Role</Link></li>
-                            <li><Link href="/solutions/roi" className="hover:text-blue-400">ROI</Link></li>
+                            <li><Link href="/solutions/dentistry" className="hover:text-blue-400">Dentistry</Link></li>
+                            <li><Link href="/solutions/oncology" className="hover:text-blue-400">Oncology</Link></li>
+                            <li><Link href="/solutions/owner-ceo" className="hover:text-blue-400">For Owners</Link></li>
                         </ul>
                     </div>
 
@@ -56,7 +57,7 @@ export default function Footer() {
                         <ul>
                             <li><Link href="/trust" className="hover:text-blue-400">Trust Center</Link></li>
                             <li><Link href="/trust/hipaa" className="hover:text-blue-400">HIPAA</Link></li>
-                            <li><Link href="/trust/privacy" className="hover:text-blue-400">Privacy</Link></li>
+                            <li><Link href="/trust/security" className="hover:text-blue-400">Security</Link></li>
                             <li><Link href="/status" className="hover:text-blue-400">Status</Link></li>
                         </ul>
                     </div>
