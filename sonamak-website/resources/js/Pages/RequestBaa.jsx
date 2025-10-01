@@ -21,50 +21,38 @@ const TextInput = ({ type = 'text', name, id, value, className = '', autoComplet
     />
 );
 
-const Textarea = ({ name, id, value, className = '', onChange }) => (
-    <textarea
-        name={name}
-        id={id}
-        value={value}
-        className={`border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm ` + className}
-        onChange={onChange}
-        rows="4"
-    ></textarea>
-);
-
 const InputError = ({ message, className = '' }) => (
     message ? <p className={'text-sm text-red-600 ' + className}>{message}</p> : null
 );
 
-export default function ContactSales() {
+export default function RequestBaa() {
     const { trans } = useLocalization();
     const { flash } = usePage().props;
 
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '',
         email: '',
-        company_name: '',
-        phone_number: '',
-        message: '',
+        clinic_name: '',
+        contact_title: '',
     });
 
     const submit = (e) => {
         e.preventDefault();
-        post(route('contact-sales.store'), {
-            onSuccess: () => reset('name', 'email', 'company_name', 'phone_number', 'message'),
+        post(route('request-baa.store'), {
+            onSuccess: () => reset(),
         });
     };
 
     return (
         <MainLayout>
-            <Head title="Contact Sales" />
+            <Head title="Request a BAA" />
             <div className="container mx-auto py-12 px-6">
                 <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg">
                     <h1 className="text-3xl font-bold text-center mb-2">
-                        {trans('talk_to_sales')}
+                        {trans('request_baa_info')}
                     </h1>
                     <p className="text-center text-gray-600 mb-8">
-                        Have questions about our plans or need a custom quote? We're here to help.
+                        For US customers handling ePHI, a BAA is required. Please fill out the form below to initiate the process.
                     </p>
 
                     {flash.success && (
@@ -81,32 +69,26 @@ export default function ContactSales() {
                         </div>
 
                         <div className="mt-4">
-                            <InputLabel forInput="email" value="Email Address" />
+                            <InputLabel forInput="email" value="Work Email Address" />
                             <TextInput id="email" type="email" name="email" value={data.email} className="mt-1 block w-full" autoComplete="email" onChange={(e) => setData('email', e.target.value)} required />
                             <InputError message={errors.email} className="mt-2" />
                         </div>
 
                         <div className="mt-4">
-                            <InputLabel forInput="company_name" value="Clinic / Company Name" />
-                            <TextInput id="company_name" name="company_name" value={data.company_name} className="mt-1 block w-full" onChange={(e) => setData('company_name', e.target.value)} />
-                            <InputError message={errors.company_name} className="mt-2" />
+                            <InputLabel forInput="clinic_name" value="Clinic Name" />
+                            <TextInput id="clinic_name" name="clinic_name" value={data.clinic_name} className="mt-1 block w-full" onChange={(e) => setData('clinic_name', e.target.value)} required />
+                            <InputError message={errors.clinic_name} className="mt-2" />
                         </div>
 
                         <div className="mt-4">
-                            <InputLabel forInput="phone_number" value="Phone Number (Optional)" />
-                            <TextInput id="phone_number" name="phone_number" value={data.phone_number} className="mt-1 block w-full" onChange={(e) => setData('phone_number', e.target.value)} />
-                            <InputError message={errors.phone_number} className="mt-2" />
-                        </div>
-
-                        <div className="mt-4">
-                            <InputLabel forInput="message" value="Your Message (Optional)" />
-                            <Textarea id="message" name="message" value={data.message} className="mt-1 block w-full" onChange={(e) => setData('message', e.target.value)} />
-                            <InputError message={errors.message} className="mt-2" />
+                            <InputLabel forInput="contact_title" value="Your Title (e.g., Compliance Officer, CEO)" />
+                            <TextInput id="contact_title" name="contact_title" value={data.contact_title} className="mt-1 block w-full" onChange={(e) => setData('contact_title', e.target.value)} />
+                            <InputError message={errors.contact_title} className="mt-2" />
                         </div>
 
                         <div className="flex items-center justify-end mt-8">
                             <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 disabled:opacity-25" disabled={processing}>
-                                {processing ? 'Sending...' : 'Send Message'}
+                                {processing ? 'Submitting...' : 'Submit BAA Request'}
                             </button>
                         </div>
                     </form>
