@@ -1,74 +1,63 @@
 import React from 'react';
 import { Link } from '@inertiajs/react';
+import ApplicationLogo from '@/Components/ApplicationLogo';
 
 export default function Footer() {
     return (
-        <footer className="bg-gray-800 text-white py-12">
-            <div className="container mx-auto px-6">
-                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
-                    {/* Product */}
+        <footer className="bg-gray-800 text-white mt-auto">
+            <div className="container mx-auto px-6 py-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+                    {/* Column 1: Logo & Mission */}
+                    <div className="col-span-1 lg:col-span-2">
+                        <ApplicationLogo className="block h-10 w-auto fill-current text-white" />
+                        <p className="mt-4 text-gray-400 text-sm">
+                            Sonamak is a comprehensive clinic management platform designed for modern healthcare providers in the Middle East and the USA.
+                        </p>
+                        <div className="mt-6">
+                            <p className="text-sm text-gray-300">© {new Date().getFullYear()} Sonamak. All rights reserved.</p>
+                        </div>
+                    </div>
+
+                    {/* Column 2: Product & Solutions */}
                     <div>
-                        <h3 className="font-bold mb-4">Product</h3>
-                        <ul>
-                            <li><Link href="/product" className="hover:text-blue-400">Overview</Link></li>
-                            <li><Link href="/product/scheduling" className="hover:text-blue-400">Scheduling</Link></li>
-                            <li><Link href="/product/ehr" className="hover:text-blue-400">EHR</Link></li>
-                            <li><Link href="/product/billing" className="hover:text-blue-400">Billing</Link></li>
-                            <li><Link href="/product/inventory" className="hover:text-blue-400">Inventory</Link></li>
-                            <li><Link href="/product/oncology" className="hover:text-blue-400">Oncology</Link></li>
+                        <h3 className="text-lg font-semibold text-white">Platform</h3>
+                        <ul className="mt-4 space-y-2">
+                            <li><Link href={route('product.index')} className="text-gray-400 hover:text-white transition-colors">Product Overview</Link></li>
+                            <li><Link href={route('solutions.index')} className="text-gray-400 hover:text-white transition-colors">Solutions</Link></li>
+                            <li><Link href={route('pricing.index')} className="text-gray-400 hover:text-white transition-colors">Pricing</Link></li>
                         </ul>
                     </div>
 
-                    {/* Solutions */}
+                    {/* Column 3: Trust & Resources */}
                     <div>
-                        <h3 className="font-bold mb-4">Solutions</h3>
-                        <ul>
-                            <li><Link href="/solutions/dentistry" className="hover:text-blue-400">Dentistry</Link></li>
-                            <li><Link href="/solutions/oncology" className="hover:text-blue-400">Oncology</Link></li>
-                            <li><Link href="/solutions/owner-ceo" className="hover:text-blue-400">For Owners</Link></li>
+                        <h3 className="text-lg font-semibold text-white">Resources</h3>
+                        <ul className="mt-4 space-y-2">
+                            <li><Link href={route('trust.index')} className="text-gray-400 hover:text-white transition-colors">Trust Center</Link></li>
+                            <li><Link href={route('resources.blog.index')} className="text-gray-400 hover:text-white transition-colors">Blog</Link></li>
+                            <li><Link href={route('resources.case-studies.index')} className="text-gray-400 hover:text-white transition-colors">Case Studies</Link></li>
+                            <li><Link href={route('resources.help-center')} className="text-gray-400 hover:text-white transition-colors">Help Center</Link></li>
                         </ul>
                     </div>
 
-                    {/* Resources */}
+                    {/* Column 4: Company & Legal */}
                     <div>
-                        <h3 className="font-bold mb-4">Resources</h3>
-                        <ul>
-                            <li><Link href="/resources" className="hover:text-blue-400">Resources Hub</Link></li>
-                            <li><Link href="/blog" className="hover:text-blue-400">Blog</Link></li>
-                            <li><Link href="/case-studies" className="hover:text-blue-400">Case Studies</Link></li>
-                            <li><Link href="/help" className="hover:text-blue-400">Help Center</Link></li>
-                        </ul>
-                    </div>
-
-                    {/* Company */}
-                    <div>
-                        <h3 className="font-bold mb-4">Company</h3>
-                        <ul>
-                            <li><Link href="/company/about" className="hover:text-blue-400">About Us</Link></li>
-                            <li><Link href="/company/careers" className="hover:text-blue-400">Careers</Link></li>
-                            <li><Link href="/company/partners" className="hover:text-blue-400">Partners</Link></li>
-                            <li><Link href="/contact-us" className="hover:text-blue-400">Contact</Link></li>
-                        </ul>
-                    </div>
-
-                    {/* Trust & Compliance */}
-                    <div>
-                        <h3 className="font-bold mb-4">Trust & Compliance</h3>
-                        <ul>
-                            <li><Link href="/trust" className="hover:text-blue-400">Trust Center</Link></li>
-                            <li><Link href="/trust/hipaa" className="hover:text-blue-400">HIPAA</Link></li>
-                            <li><Link href="/trust/security" className="hover:text-blue-400">Security</Link></li>
-                            <li><Link href="/status" className="hover:text-blue-400">Status</Link></li>
+                        <h3 className="text-lg font-semibold text-white">Company</h3>
+                        <ul className="mt-4 space-y-2">
+                            <li><Link href={route('company.about')} className="text-gray-400 hover:text-white transition-colors">About Us</Link></li>
+                            <li><Link href={route('company.careers')} className="text-gray-400 hover:text-white transition-colors">Careers</Link></li>
+                            <li><Link href={route('company.partners')} className="text-gray-400 hover:text-white transition-colors">Partners</Link></li>
+                            <li><Link href={route('contact-us')} className="text-gray-400 hover:text-white transition-colors">Contact Us</Link></li>
                         </ul>
                     </div>
                 </div>
-                <div className="mt-12 border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center text-sm">
-                    <p>&copy; {new Date().getFullYear()} Sonamak. All rights reserved.</p>
-                    <div className="flex space-x-4 mt-4 md:mt-0">
-                        <Link href="/legal/terms" className="hover:text-blue-400">Terms</Link>
-                        <Link href="/legal/privacy" className="hover:text-blue-400">Privacy</Link>
-                        <Link href="/legal/cookies" className="hover:text-blue-400">Cookies</Link>
-                        <Link href="/accessibility" className="hover:text-blue-400">Accessibility</Link>
+
+                <div className="mt-12 border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
+                    <div className="flex space-x-4">
+                        <Link href={route('legal.terms')} className="text-sm text-gray-400 hover:text-white">Terms of Service</Link>
+                        <Link href={route('legal.privacy')} className="text-sm text-gray-400 hover:text-white">Privacy Policy</Link>
+                        <Link href={route('legal.cookies')} className="text-sm text-gray-400 hover:text-white">Cookie Policy</Link>
+                        <Link href={route('trust.sla')} className="text-sm text-gray-400 hover:text-white">SLA</Link>
+                        <Link href={route('accessibility')} className="text-sm text-gray-400 hover:text-white">Accessibility</Link>
                     </div>
                 </div>
             </div>

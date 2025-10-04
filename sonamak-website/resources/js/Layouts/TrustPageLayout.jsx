@@ -1,60 +1,53 @@
 import React from 'react';
-import { Link, usePage } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 import MainLayout from '@/Layouts/MainLayout';
 
-const TrustNavLink = ({ href, children }) => {
-    const { url } = usePage();
-    const isActive = url.startsWith(href);
-
-    return (
-        <Link
-            href={href}
-            className={`block px-4 py-2 text-sm rounded-md ${
-                isActive
-                    ? 'bg-blue-100 text-blue-700 font-semibold'
-                    : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
-            }`}
-        >
-            {children}
-        </Link>
-    );
-};
-
-export default function TrustPageLayout({ children }) {
-    const trustNavLinks = [
-        { href: '/trust', text: 'Trust Center Overview' },
-        { href: '/trust/hipaa', text: 'HIPAA Compliance' },
-        { href: '/trust/security', text: 'Security' },
-        { href: '/trust/privacy', text: 'Privacy Notice' },
-        { href: '/trust/dpa', text: 'DPA' },
-        { href: '/trust/baa', text: 'BAA' },
-        { href: '/trust/subprocessors', text: 'Subprocessors' },
-        { href: '/trust/sla', text: 'SLA & Availability' },
-        { href: '/trust/responsible-disclosure', text: 'Responsible Disclosure' },
-        { href: '/accessibility', text: 'Accessibility' },
+export default function TrustPageLayout({ title, children }) {
+    const trustNav = [
+        { name: 'Trust Center', href: route('trust.index'), current: route().current('trust.index') },
+        { name: 'HIPAA', href: route('trust.hipaa'), current: route().current('trust.hipaa') },
+        { name: 'Security', href: route('trust.security'), current: route().current('trust.security') },
+        { name: 'Privacy', href: route('trust.privacy'), current: route().current('trust.privacy') },
+        { name: 'DPA', href: route('trust.dpa'), current: route().current('trust.dpa') },
+        { name: 'BAA', href: route('trust.baa'), current: route().current('trust.baa') },
+        { name: 'Subprocessors', href: route('trust.subprocessors'), current: route().current('trust.subprocessors') },
+        { name: 'SLA & Availability', href: route('trust.sla'), current: route().current('trust.sla') },
+        { name:- 'Responsible Disclosure', href: route('trust.responsible-disclosure'), current: route().current('trust.responsible-disclosure') },
     ];
 
-    const page = (
-        <div className="container mx-auto px-6 py-12">
-            <div className="grid md:grid-cols-4 gap-8">
-                <aside className="md:col-span-1">
-                    <h2 className="text-lg font-bold mb-4">Trust & Compliance</h2>
-                    <nav className="space-y-1">
-                        {trustNavLinks.map(link => (
-                            <TrustNavLink key={link.href} href={link.href}>
-                                {link.text}
-                            </TrustNavLink>
-                        ))}
-                    </nav>
-                </aside>
-                <main className="md:col-span-3">
-                    <div className="prose max-w-none bg-white p-8 rounded-lg shadow-md">
-                        {children}
-                    </div>
-                </main>
-            </div>
-        </div>
-    );
+    return (
+        <MainLayout>
+            <Head title={title} />
+            <div className="bg-gray-100 py-12">
+                <div className="container mx-auto px-6">
+                    <div className="lg:flex">
+                        <aside className="w-full lg:w-1/4 lg:pr-8">
+                            <nav className="space-y-1">
+                                {trustNav.map((item) => (
+                                    <Link
+                                        key={item.name}
+                                        href={item.href}
+                                        className={`block px-4 py-2 text-sm font-medium rounded-md ${
+                                            item.current
+                                                ? 'bg-blue-100 text-blue-700'
+                                                : 'text-gray-600 hover:bg-gray-200 hover:text-gray-900'
+                                        }`}
+                                    >
+                                        {item.name}
+                                    </Link>
+                                ))}
+                            </nav>
+                        </aside>
 
-    return <MainLayout children={page} />;
+                        <div className="w-full lg:w-3/4 mt-8 lg:mt-0">
+                            <article className="prose lg:prose-lg max-w-none bg-white p-8 rounded-lg shadow-md">
+                                <h1>{title}</h1>
+                                {children}
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </MainLayout>
+    );
 }

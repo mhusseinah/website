@@ -3,13 +3,13 @@ import { Link } from '@inertiajs/react';
 
 export default function ProductHero() {
     return (
-        <section className="bg-white dark:bg-gray-900">
+        <section className="bg-white">
             <div className="container mx-auto px-6 py-16 text-center">
                 <div className="max-w-4xl mx-auto">
-                    <h1 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white">
+                    <h1 className="text-4xl md:text-5xl font-bold text-gray-800">
                         All Modules and Capabilities in One Clinic ERP
                     </h1>
-                    <p className="mt-6 text-lg text-gray-600 dark:text-gray-300">
+                    <p className="mt-6 text-lg text-gray-600">
                         Unify scheduling, billing, inventory, clinical documentation, analytics, and access control—built for multi-branch practices with HIPAA-aligned features: RBAC, audit logs, encryption.
                     </p>
                     <div className="mt-8 flex justify-center space-x-4">

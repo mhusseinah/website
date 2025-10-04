@@ -3,17 +3,17 @@ import { Link } from '@inertiajs/react';
 
 export default function Hero() {
     return (
-        <section className="bg-white dark:bg-gray-900">
+        <section className="bg-white">
             <div className="container mx-auto px-6 py-16 text-center">
                 <div className="max-w-4xl mx-auto">
-                    <h1 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white">
+                    <h1 className="text-4xl md:text-5xl font-bold text-gray-800">
                         Clinic Management ERP for Multi-Branch Practices
                     </h1>
-                    <p className="mt-6 text-lg text-gray-600 dark:text-gray-300">
+                    <p className="mt-6 text-lg text-gray-600">
                         Operating since January 2019 in the Middle East and since January 2025 in the USA, with HIPAA-aligned features for secure, reliable workflows.
                     </p>
                     <div className="mt-8">
-                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                        <p className="text-sm text-gray-500">
                             HIPAA-Aligned: RBAC, audit logs, encryption in transit and at rest.
                             <Link href="/trust" className="text-blue-500 hover:underline ml-1">
                                 Learn more

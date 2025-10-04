@@ -1,47 +1,59 @@
+import React from 'react';
 import { Head, Link } from '@inertiajs/react';
 import TrustPageLayout from '@/Layouts/TrustPageLayout';
 
 export default function Hipaa() {
-    const pageContent = (
-        <>
-            <Head title="HIPAA Compliance" />
-            <h1 className="text-4xl font-bold">HIPAA Compliance</h1>
-            <p className="mt-4 text-lg text-gray-600">
-                Sonamak provides features to help US healthcare providers and business associates maintain compliance with the Health Insurance Portability and Accountability Act (HIPAA).
+    return (
+        <TrustPageLayout title="HIPAA Compliance">
+            <p className="lead">
+                For healthcare providers in the United States, complying with the Health Insurance Portability and Accountability Act (HIPAA) is a critical requirement. Sonamak provides a platform with features designed to help you meet your HIPAA obligations for protecting Patient Health Information (PHI).
             </p>
 
-            <div className="mt-8">
-                <h2 className="text-2xl font-bold">Shared Responsibility</h2>
-                <p className="mt-2 text-gray-600">
-                    While Sonamak provides a secure, HIPAA-aligned platform, achieving full compliance is a shared responsibility. Your organization must implement and enforce its own policies, procedures, and training. This page outlines the key platform features that support your compliance program.
-                </p>
-            </div>
+            <h2>Our Commitment to HIPAA</h2>
+            <p>
+                Sonamak is committed to providing a secure platform for our customers. For US healthcare entities, this includes signing a Business Associate Agreement (BAA) and implementing safeguards to protect PHI.
+            </p>
+            <p>
+                <strong>Note:</strong> While Sonamak provides a HIPAA-aligned platform, using our software does not automatically make your organization HIPAA compliant. Compliance is a shared responsibility that includes your organization's policies, procedures, and how you configure and use our platform.
+            </p>
 
-            <div className="mt-8">
-                <h2 className="text-2xl font-bold">Administrative & Technical Safeguards</h2>
-                <p className="mt-2 text-gray-600">Our platform includes the following key technical safeguards to help you protect electronic Protected Health Information (ePHI):</p>
-                <ul className="mt-4 list-disc list-inside space-y-2">
-                    <li><strong>Access Controls:</strong> Role-Based Access Control (RBAC) allows you to enforce the principle of least privilege, ensuring users can only access the minimum necessary ePHI.</li>
-                    <li><strong>Audit Controls:</strong> Detailed, tamper-evident audit logs record access and modifications to ePHI, providing a clear history of activity.</li>
-                    <li><strong>Integrity Controls:</strong> Data is protected from improper alteration or destruction through encryption and secure data handling procedures.</li>
-                    <li><strong>Transmission Security:</strong> All data is encrypted in transit using TLS to protect it as it travels over the internet.</li>
-                </ul>
-            </div>
+            <h3>Key Safeguards</h3>
+            <p>We have implemented administrative, technical, and physical safeguards to help you protect PHI:</p>
 
+            <h4>1. Administrative Safeguards</h4>
+            <ul>
+                <li><strong>Security Officer:</strong> We have designated a Security Officer responsible for developing and implementing our security policies and procedures.</li>
+                <li><strong>Risk Analysis:</strong> We conduct regular risk assessments to identify and mitigate potential threats to PHI.</li>
+                <li><strong>Employee Training:</strong> Our team is trained on security best practices and HIPAA requirements.</li>
+                <li><strong>BAA Availability:</strong> We offer a BAA to covered entities and their business associates.</li>
+            </ul>
+
+            <h4>2. Technical Safeguards</h4>
+            <ul>
+                <li><strong>Access Control:</strong> Role-Based Access Control (RBAC) allows you to restrict access to PHI based on user roles and responsibilities.</li>
+                <li><strong>Audit Controls:</strong> Detailed audit logs track access and activity within the platform, helping you monitor for unauthorized access.</li>
+                <li><strong>Data Encryption:</strong> All PHI is encrypted in transit using TLS and at rest using industry-standard encryption protocols.</li>
+                <li><strong>Integrity Controls:</strong> We use checksums and other measures to ensure that PHI is not improperly altered or destroyed.</li>
+            </ul>
+
+            <h4>3. Physical Safeguards</h4>
+            <ul>
+                <li><strong>Data Centers:</strong> Our platform is hosted in secure, SOC 2-compliant data centers with strict access controls.</li>
+                <li><strong>Workstation Security:</strong> We enforce policies to secure workstations that access PHI.</li>
+            </ul>
+
+            <h2>Business Associate Agreement (BAA)</h2>
+            <p>
+                A BAA is a legal agreement that outlines each party's responsibilities when handling PHI. We will sign a BAA with covered entities as part of our commitment to helping you meet your HIPAA compliance obligations.
+            </p>
+            <p>
+                To learn more or to request a BAA, please contact our compliance team.
+            </p>
             <div className="mt-8">
-                <h2 className="text-2xl font-bold">Business Associate Agreement (BAA)</h2>
-                <p className="mt-2 text-gray-600">
-                   For customers in the USA who handle ePHI, Sonamak offers a Business Associate Agreement (BAA). This agreement outlines our respective responsibilities for protecting health information under HIPAA.
-                </p>
-                <div className="mt-4">
-                     <Link href="/request-baa" className="px-5 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700">
-                        Request a BAA
-                    </Link>
-                </div>
+                <Link href={route('request-baa')} className="bg-blue-600 text-white px-6 py-2 rounded-md font-semibold hover:bg-blue-700 transition no-underline">
+                    Request BAA Information
+                </Link>
             </div>
-             <p className="text-xs text-gray-500 mt-12">Last updated: September 21, 2025</p>
-        </>
+        </TrustPageLayout>
     );
-
-    return <TrustPageLayout children={pageContent} />;
 }
